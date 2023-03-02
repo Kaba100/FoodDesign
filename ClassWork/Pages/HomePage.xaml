@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ClassWork.Pages.HomePage"
+             Title="HomePage"
+             Shell.NavBarIsVisible="False">
+    <Grid RowDefinitions="0.18*,0.82*">
+        <Grid  Grid.Row="0" RowDefinitions="*,*,*" BackgroundColor="#F07">
+            <Label  Grid.Row="0" Text="Morning!," HorizontalTextAlignment="Start" TextColor="White" Padding="10"/>
+            <Label Grid.Row="1" Text="Hi Mouriba," HorizontalTextAlignment="Start" TextColor="White" Padding="5"/>
+            <Image Grid.Row="1" HeightRequest="50"  WidthRequest="50"  Source="modiba.jpg" HorizontalOptions="End" >
+                <Image.Clip>
+                    <EllipseGeometry RadiusX="25" RadiusY="25" Center="25,25"/>
+                </Image.Clip>
+            </Image>
+
+            <Entry    Placeholder="Find a meal" Grid.Row="2" FontSize="18" TextColor="White" HorizontalOptions="CenterAndExpand"/>
+        </Grid>
+
+        <Grid Grid.Row="1" ColumnDefinitions="0.3*,0.7*" RowDefinitions="0.6*,0.4*">
+            <Grid Grid.Column="0"  BackgroundColor="LightPink" Grid.RowSpan="2" 
+                  Padding="25" RowDefinitions="*,*,*,*,*">
+                <Image Source="ricebowl.png" Grid.Column="0" Grid.Row="0"/>
+                <Image Source="hamburger.png" Grid.Column="0" Grid.Row="1"/>
+                <Image Source="cupcake.png" Grid.Column="0" Grid.Row="2"/>
+                <Image Source="cola.png" Grid.Column="0" Grid.Row="3"/>
+                <Image Source="bread.png" Grid.Column="0" Grid.Row="4"/>
+
+
+            </Grid>
+            <VerticalStackLayout Grid.Column="1" Grid.Row="0" BackgroundColor="White"  Padding="15">
+                <Label Text="Specials" FontSize="22" FontAttributes="Bold" HorizontalOptions="Start" Margin="0,5,6,15"/>
+                <Frame CornerRadius="30" HeightRequest="185" HasShadow="False"  
+                       Padding="0"
+                       ZIndex="100" BorderColor="Transparent" WidthRequest="200" 
+                       BackgroundColor="#F07" TranslationY="-7">
+                    <Grid IsClippedToBounds="False">
+                        <Grid RowDefinitions="0.4*,0.45*,0.15*">
+
+                            <Label Text="Amala&#10; and Ewedu" FontSize="18" Grid.Row="1" 
+                               Grid.Column="0" TextColor="White" FontAttributes="Bold"
+                               HorizontalOptions="Start" Margin="20,0,0,0"/>
+                            <Label Text="$1200" VerticalOptions="Start" 
+                               FontSize="17" TextColor="White" Margin="20,0,0,0"
+                               Grid.Row="2" Grid.Column="0" HorizontalOptions="Start"
+                                TranslationY="-25"/>
+                        </Grid>
+                        
+                    </Grid>
+
+                </Frame>
+                <Border WidthRequest="100" HeightRequest="100" Padding="10" TranslationY="-220" TranslationX="75" 
+                   StrokeThickness="0"
+                       BackgroundColor="Transparent" Margin="0" ZIndex="5000"  >
+                    <Image Margin="0"  Source="amalaandewedu" 
+                              HeightRequest="100"  Aspect="AspectFill" WidthRequest="100"  VerticalOptions="Center">
+                        <Image.Clip>
+                            <EllipseGeometry RadiusX="50" RadiusY="50" Center="50,50"/>
+                        </Image.Clip>
+                    </Image>
+                </Border>
+                <Label Text="Popular" FontSize="22" FontAttributes="Bold" TranslationY="-95" HorizontalTextAlignment="Start"/>
+
+            </VerticalStackLayout>
+            <Grid Grid.Column="1" Grid.Row="1" BackgroundColor="#fff">
+                <CollectionView ItemsSource="{Binding Foods}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid ColumnDefinitions="0.4*,0.6*" RowDefinitions="Auto,Auto" Margin="0" >
+                                <Border StrokeThickness="0">
+                                    <Image Source="{Binding Picture}" HeightRequest="60" WidthRequest="60" Grid.RowSpan="2" Grid.Column="0" >
+                                        <Image.Clip>
+                                            <EllipseGeometry RadiusX="30" RadiusY="30" Center="30,30"/>
+                                        </Image.Clip>
+                                    </Image>
+                                </Border>
+                                <Label Text="{Binding Name}"  Grid.Row="0" Grid.Column="1" TextColor="#333" 
+                                       Padding="1" FontAttributes="Bold" HorizontalOptions="Start" />
+                                <Label Text="{Binding Price}" Grid.Row="1" Grid.Column="1" TextColor="#aeaeae"/>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
+        </Grid>
+
+
+
+
+    </Grid>
+</ContentPage>

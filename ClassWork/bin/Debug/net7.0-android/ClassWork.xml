@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ClassWork</name>
+    </assembly>
+    <members>
+        <member name="P:ClassWork.NewFolder.FoodVM.Foods">
+            <inheritdoc cref="F:ClassWork.NewFolder.FoodVM.foods"/>
+        </member>
+    </members>
+</doc>

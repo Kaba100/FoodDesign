@@ -1,0 +1,96 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net7.0-android;net7.0-ios;net7.0-maccatalyst</TargetFrameworks>
+		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net7.0-windows10.0.19041.0</TargetFrameworks>
+		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
+		<!-- <TargetFrameworks>$(TargetFrameworks);net7.0-tizen</TargetFrameworks> -->
+		<OutputType>Exe</OutputType>
+		<RootNamespace>ClassWork</RootNamespace>
+		<UseMaui>true</UseMaui>
+		<SingleProject>true</SingleProject>
+		<ImplicitUsings>enable</ImplicitUsings>
+
+		<!-- Display name -->
+		<ApplicationTitle>ClassWork</ApplicationTitle>
+
+		<!-- App Identifier -->
+		<ApplicationId>com.companyname.classwork</ApplicationId>
+		<ApplicationIdGuid>ee3d6a81-4610-49dd-be7f-bdc991ff385c</ApplicationIdGuid>
+
+		<!-- Versions -->
+		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+		<ApplicationVersion>1</ApplicationVersion>
+
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">11.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">13.1</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
+		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<!-- App Icon -->
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+
+		<!-- Splash Screen -->
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+
+		<!-- Images -->
+		<MauiImage Include="Resources\Images\*" />
+		<MauiImage Update="Resources\Images\dotnet_bot.svg" BaseSize="168,208" />
+
+		<!-- Custom Fonts -->
+		<MauiFont Include="Resources\Fonts\*" />
+
+		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
+		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Resources\Images\AmalaAbula.jfif" />
+	  <None Remove="Resources\Images\AmalaAndEwedu.jfif" />
+	  <None Remove="Resources\Images\bread.png" />
+	  <None Remove="Resources\Images\BreadAndBeans.jfif" />
+	  <None Remove="Resources\Images\broccoli.png" />
+	  <None Remove="Resources\Images\cola.png" />
+	  <None Remove="Resources\Images\cupcake.png" />
+	  <None Remove="Resources\Images\deliverfood.png" />
+	  <None Remove="Resources\Images\download.jfif" />
+	  <None Remove="Resources\Images\EbaEgusi.jfif" />
+	  <None Remove="Resources\Images\foodandwine.png" />
+	  <None Remove="Resources\Images\FriedRice.jfif" />
+	  <None Remove="Resources\Images\GarriAndFish.jfif" />
+	  <None Remove="Resources\Images\GarriBean.jfif" />
+	  <None Remove="Resources\Images\hamburger.png" />
+	  <None Remove="Resources\Images\hotdog.png" />
+	  <None Remove="Resources\Images\jollof.jfif" />
+	  <None Remove="Resources\Images\modiba.jpg" />
+	  <None Remove="Resources\Images\Pizza.jfif" />
+	  <None Remove="Resources\Images\PoundedyamAndOgbono.jfif" />
+	  <None Remove="Resources\Images\ricebowl.png" />
+	  <None Remove="Resources\Images\salamipizza.png" />
+	  <None Remove="Resources\Images\SemoAndVegetables.jfif" />
+	  <None Remove="Resources\Images\TuwoAndEgusi.jfif" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="CommunityToolKit.Mvvm" Version="8.1.0" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Abc1.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\HomePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="NewFolder\" />
+	</ItemGroup>
+
+</Project>
